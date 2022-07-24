@@ -1,20 +1,23 @@
 import { Fragment } from "react";
 import { Route } from "react-router";
+import Header from "./Layout/Header/Header";
 
 
-export const HomeTemplate = (props) => {
-    const {Component, ...restProps} = props;
+export const HomeTemplate = (props) => { //prop = path exact component
+    const { Component, ...restProps } = props;
 
     return <Route {...restProps} render={(propsRoute) => {
+        //props.location, props.history, props.match
 
         return <Fragment>
-            <h1 className="bg-black">Header homepage</h1>
+            <Header {...propsRoute} />
 
             <Component {...propsRoute} />
 
-            <footer className="bg-red">
-                Footer
+            <footer classname="bg-black text-white">
+                Footerdsad
             </footer>
+
         </Fragment>
     }} />
 }
