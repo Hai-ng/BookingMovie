@@ -1,23 +1,51 @@
+import React from 'react'; 
 import { Fragment } from "react";
 import { Route } from "react-router";
+import Footer from './Layout/Footer/Footer';
 import Header from "./Layout/Header/Header";
+import HomeCarousel from "./Layout/HomeCarousel/HomeCarousel";
+
+
+// export default function HomeTemplate({Component, ...props}) {
+//     return (
+//         <Route {...props}
+//          render={(propsComponent) => (
+//             <Fragment>
+//                  <Header {...propsComponent} />
+//                  <HomeCarousel {...propsComponent} />
+
+//                  <Component {...propsComponent} />
+//             <footer classname="bg-black text-white">
+//                  Footer
+//             </footer>
+
+//             </Fragment>
+              
+//           )}
+//          />
+//     )
+// }
 
 
 export const HomeTemplate = (props) => { //prop = path exact component
     const { Component, ...restProps } = props;
 
-    return <Route {...restProps} render={(propsRoute) => {
+    return <Route {...restProps} render= {(propsRoute) => {
         //props.location, props.history, props.match
+        console.log("restProps", restProps);
 
         return <Fragment>
             <Header {...propsRoute} />
 
+            <HomeCarousel {...propsRoute} />
+
             <Component {...propsRoute} />
 
-            <footer classname="bg-black text-white">
-                Footerdsad
-            </footer>
+            <Footer />
+               
+           
 
         </Fragment>
     }} />
 }
+
