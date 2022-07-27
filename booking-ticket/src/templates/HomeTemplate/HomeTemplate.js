@@ -32,7 +32,7 @@ export const HomeTemplate = (props) => { //prop = path exact component
 
     return <Route {...restProps} render= {(propsRoute) => {
         //props.location, props.history, props.match
-        console.log("restProps", restProps);
+        // console.log("restProps", restProps);
 
         return <Fragment>
             <Header {...propsRoute} />
