@@ -2,6 +2,7 @@ import React, { useEffect } from 'react' //useEffect: auto kich hoat call api
 import { Carousel } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
 import { getCarouselAction } from '../../../../redux/actions/CarouselActions';
+import './HomeCarousel.css';
 
 
 export default function HomeCarousel(props) {
@@ -26,7 +27,6 @@ export default function HomeCarousel(props) {
 
     const renderImg = () => {
         return arrImg.map((item, index) => {
-
             const contentStyle = {
                 height: '600px',
                 color: '#fff',
@@ -52,24 +52,6 @@ export default function HomeCarousel(props) {
         <Carousel effect="fade">
 
             {renderImg()}     
-
-{/* 
-            <div>
-                <div style={contentStyle}>
-                    <img src='http://movieapi.cyberlearn.vn/hinhanh/ban-tay-diet-quy.png' className='w-full h-full' alt='banner' />
-                </div>
-            </div>
-            <div>
-                <div style={contentStyle}>
-                    <img src='http://movieapi.cyberlearn.vn/hinhanh/lat-mat-48h.png' className='w-full h-full' alt='banner' />
-                </div>
-
-            </div>
-            <div>
-                <div style={contentStyle}>
-                    <img src='http://movieapi.cyberlearn.vn/hinhanh/cuoc-chien-sinh-tu.png' className='w-full h-full' alt='banner' />
-                </div>
-            </div> */}
 
         </Carousel>
     )

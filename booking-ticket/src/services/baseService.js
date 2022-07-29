@@ -1,9 +1,5 @@
 import Axios from "axios"
-import { DOMAIN, TOKEN } from '../util/settings/config'
-
-
-export const TOKEN_CYBERSOFT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNzEiLCJIZXRIYW5TdHJpbmciOiIyOS8xMi8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NzIyNzIwMDAwMDAiLCJuYmYiOjE2NDU5ODEyMDAsImV4cCI6MTY3MjQxOTYwMH0.SZe3CJl1OkNH-0zfzqOV0CSC8WZ6q2hw64UykpCytT0";
-export const ACCESS_TOKEN = TOKEN;
+import { DOMAIN, TOKEN, TOKEN_CYBERSOFT } from '../util/settings/config'
 
 
 // export const http = axios.create({
@@ -15,7 +11,7 @@ export const ACCESS_TOKEN = TOKEN;
 //     config.headers = {
 //         ...config.headers,
 // 'TokenCyberSoft': TOKEN_CYBERSOFT,
-//         'Authorization': localStorage.getItem(ACCESS_TOKEN)
+//         'Authorization': localStorage.getItem(TOKEN)
 //     }
 //     return config;
 // }, (errors) => {
