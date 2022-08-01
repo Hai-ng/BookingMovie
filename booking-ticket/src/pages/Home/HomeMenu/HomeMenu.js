@@ -1,54 +1,87 @@
-import { Radio, Space, Tabs } from 'antd';
-import React, { useState } from 'react';
+import { Tabs } from 'antd';
+import moment from 'moment';
+import React, { Fragment, useState } from 'react';
+import { NavLink } from 'react-router-dom'
 
 
 
 const { TabPane } = Tabs;
 
-export default function HomeMenu(props) {
+export default class HomeMenu extends React.PureComponent {
 
-    const [state, setState] = useState({
+    state = {
         tabPosition: 'left',
-    })
-
-    const changeTabPosition = (e) => {
-        setState({ tabPosition: e.target.value });
-    };
-
-    const { tabPosition } = state;
-
-    // const [tabPosition, setTabPosition] = useState('left');
+    }
 
     // const changeTabPosition = (e) => {
-    //   setTabPosition(e.target.value);
+    //     setState({ tabPosition: e.target.value });
     // };
 
-    return (
-        <>
-            {/* <Space
-                style={{
-                    marginBottom: 24,
-                }}
-            >
-                Tab position:
-                <Radio.Group value={tabPosition} onChange={changeTabPosition}>
-                    <Radio.Button value="top">top</Radio.Button>
-                    <Radio.Button value="bottom">bottom</Radio.Button>
-                    <Radio.Button value="left">left</Radio.Button>
-                    <Radio.Button value="right">right</Radio.Button>
-                </Radio.Group>
-            </Space> */}
-            <Tabs tabPosition={tabPosition}>
-                <TabPane tab={<img src='https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png' className='rounded-full' width="100" />} key="1">
-                    Content of Tab 1
-                </TabPane>
-                <TabPane tab="Tab 2" key="2">
-                    Content of Tab 2
-                </TabPane>
-                <TabPane tab="Tab 3" key="3">
-                    Content of Tab 3
-                </TabPane>
-            </Tabs>
-        </>
-    )
+    renderArrRap = () => {
+        let { tabPosition } = this.state;
+        return this.props.arrRap?.map((heThongRap, index) => {
+            return <TabPane tab={<img src={heThongRap.logo} className='rounded-full' width="100" />} key={index}>
+                {/* {heThongRap.tenHeThongRap} */}
+                <Tabs tabPosition={tabPosition}>
+                    {heThongRap.lstCumRap?.map((cumRap, index) => {
+                        return <TabPane
+                            tab={
+                                <div style={{ width:'350px', display: 'flex' }}>
+                                    <img src={heThongRap.logo} className='' width="80" />
+                                    <div className='ml-1'>
+                                        <h1 className='text-left font-bold'>
+                                            {cumRap.tenCumRap}
+                                        </h1>
+                                        <p style={{ display: 'flex' }}>{cumRap.diaChi}</p>
+                                        {/* <p className='text-red-500 text-left'>Chi tiet</p> */}
+                                    </div>
+
+                                </div>
+                            }
+                            key={index}>
+                            {/* load phim tuong ung */}
+                            {cumRap.danhSachPhim.map((phim, index) => {
+                                return <Fragment key={index}>
+                                    <div className='my-5' style={{ display: 'flex' }} >
+                                        <div style={{ display: 'flex' }}>
+                                            <img src={phim.hinhAnh} alt={phim.tenPhim} style={{ height: 150, width: 100 }} />
+                                            <div className='ml-2'>
+                                                <h1 className='font-bold text-xl'>{phim.tenPhim}</h1>
+                                                <div className='grid grid-cols-5 gap-6'>
+                                                    {phim.lstLichChieuTheoPhim?.slice(0, 12).map((lichChieu, index) => {
+                                                        return <NavLink className="text-sm text-green-400" to='/' key={index}>
+                                                            {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
+                                                        </NavLink>
+                                                    })}
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                </Fragment>
+                            })}
+
+                        </TabPane>
+                    })}
+
+                </Tabs>
+            </TabPane>
+        })
+    }
+
+    render() {
+        const { tabPosition } = this.state;
+
+        return (
+            <>
+                <Tabs tabPosition={tabPosition}>
+                    {this.renderArrRap()}
+                </Tabs>
+            </>
+        )
+
+    }
+
 }

@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import styleSlick from './MultipleRowSlick.module.css'
-import Movie from '../Movies/Movie';
+import Movie_Flip from "../Movies/Movie_Flip";
+import { SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from "../../redux/actions/types/QuanLyPhimType";
+import { useDispatch, useSelector } from "react-redux";
+import './MultipleRowSlick.module.css';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
+
   return (
     <div
       className={`${className} ${styleSlick['slick-next']}`}
@@ -25,95 +29,63 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default class MultipleRows extends Component {
-  renderMovies = () => {
-    return this.props.arrMovie.map((item, index) => {
-      return <div className={`${styleSlick['width-item']}`} key={index}  >
-        <Movie phim={item}/>
+
+
+const MultipleRowSlick = (props) => {
+  const dispatch = useDispatch();
+  const { dangChieu, sapChieu } = useSelector(state => state.QuanLyPhimReducer);
+
+  let activeMovieDC = dangChieu === true ? 'active_Movie' : 'none_active_Movie';
+  let activeMovieSC = sapChieu === true ? 'active_Movie' : 'none_active_Movie';
+
+  const renderMovies = () => {
+    return props.arrMovie.slice(0, 12).map((item, index) => {
+      // return <div className={`${styleSlick['width-item']}`} key={index}  >
+      return <div key={index}  >
+        {/* <Movie phim={item}/> */}
+        <Movie_Flip item={item} />
       </div>
     })
   }
 
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 2,
+    speed: 500,
+    rows: 2,
+    slidesPerRow: 2,
+    // variableWidth: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />
+  };
 
-  render() {
-    const settings = {
-      className: "center variableWidth",
-      centerMode: true,
-      infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 3,
-      speed: 500,
-      rows: 1,
-      slidesPerRow: 2,
-      variableWidth: true,
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
-    };
+  return (
+    <div>
+      <button type="button" className={`${activeMovieDC} px-8 py-3 font-semibold rounded-full bg-black text-white`}
+        onClick={() => {
+          const action = { type: SET_PHIM_DANG_CHIEU }
+          dispatch(action);
+        }} > ĐANG CHIẾU</button>
 
-    return (
-      <div>
-        <h2>Multiple Rows</h2>
-        <Slider {...settings}>
-
-          {this.renderMovies()}
-          {this.renderMovies()}
-          {this.renderMovies()}
-          {this.renderMovies()}
-          {this.renderMovies()}
-     
+      <button type="button" className={`${activeMovieSC} px-8 py-3 font-semibold rounded-full bg-black text-white`}
+        onClick={() => {
+          const action = { type: SET_PHIM_SAP_CHIEU }
+          dispatch(action);
+        }}> SẮP CHIẾU</button>
 
 
-          {/* <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>
-          </div>
-          <div>
-            <h3>8</h3>
-          </div>
-          <div>
-            <h3>9</h3>
-          </div>
-          <div>
-            <h3>10</h3>
-          </div>
-          <div>
-            <h3>11</h3>
-          </div>
-          <div>
-            <h3>12</h3>
-          </div>
-          <div>
-            <h3>13</h3>
-          </div>
-          <div>
-            <h3>14</h3>
-          </div>
-          <div>
-            <h3>15</h3>
-          </div>
-          <div>
-            <h3>16</h3>
-          </div> */}
+      <Slider {...settings}>
 
-        </Slider>
-      </div>
-    );
-  }
+
+        {renderMovies()}
+
+      </Slider>
+    </div>
+  );
+
 }
+
+export default MultipleRowSlick;

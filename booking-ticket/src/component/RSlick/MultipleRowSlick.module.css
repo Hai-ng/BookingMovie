@@ -7,3 +7,17 @@
 .width-item {
     width: 100% !important;
 }
+
+.height-item {
+    /* padding-bottom: 200px !important; */
+    /* margin-bottom: 100px !important;
+    height: 300px !important; */
+}
+
+.active_Movie {
+    @apply bg-gray-800 text-white;
+}
+
+.none_active_Movie {
+    @apply bg-white text-gray-800;
+}

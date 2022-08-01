@@ -15,7 +15,7 @@ function App() {
     <Router history={history}> 
       <Switch>
         {/* <Route path={'/home'} component={Home}/> */}
-        <HomeTemplate path="/" exact Component={Home} />
+        <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate path="/contact" exact Component={Contact} />
         <HomeTemplate path="/news" exact Component={News} />
         <Route path="/login" exact Component={Login} />
