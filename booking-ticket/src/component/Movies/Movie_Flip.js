@@ -13,7 +13,9 @@ export default function Movie_Flip(props) {
                     <img src={item.hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} />
                 </div>
 
-                <div className="flip-card-back" style={{ position: 'relative', backgroundColor: 'rgba(0,0,0,.9)' }}>
+                <div onClick={() => {
+                    history.push(`/detail/${item.maPhim}`)
+                }}  className="flip-card-back" style={{ position: 'relative', backgroundColor: 'rgba(0,0,0,.9)' }}>
                     <div style={{ position: 'absolute', top: '0', left: '0'}}>
                         <img src={item.hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} />
                     </div>
