@@ -1,4 +1,5 @@
 import React from 'react'
+import { history } from '../../App';
 import './Movie_Flip.css'
 
 export default function Movie_Flip(props) {
@@ -27,7 +28,9 @@ export default function Movie_Flip(props) {
                     </div>
                 </div>
             </div>
-            <div className='bg-orange-300 text-center cursor-pointer py-2 my-2 font-bold' >ĐẶT VÉ</div>
+            <div onClick={() => {
+                history.push(`/detail/${item.maPhim}`)
+            }} className='bg-orange-300 text-center cursor-pointer py-2 my-2 font-bold' >ĐẶT VÉ</div>
          
         </div>
     )

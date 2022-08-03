@@ -1,8 +1,8 @@
-import React from 'react'
+// import React from 'react'
 
 export default function Movie(props) {
 
-  const { phim } = props;
+  // const { phim } = props;
 
   // console.log('phim', phim);
 
