@@ -9,12 +9,12 @@ export default function Login(props) {
           <div>
           <img className='w-20 h-20 rounded-full' src="https://png.pngtree.com/png-clipart/20190516/original/pngtree-cinema-vector-illustration-png-image_3704537.jpg" alt="" />
           </div>
-          <div className="text-2xl text-black tracking-wide ml-2 font-semibold">CYBER_CINESTAR</div>
+          <div className="text-3xl text-red-700 tracking-wide ml-2 font-bold">CYBER_CINESTAR</div>
         </div>
       </div>
       <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
         <h2 className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
-xl:text-bold">LOG IN</h2>
+xl:text-bold">Log in</h2>
         <div className="mt-12">
           <form>
             <div>

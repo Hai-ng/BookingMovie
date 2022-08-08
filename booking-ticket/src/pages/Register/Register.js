@@ -14,7 +14,7 @@ export default function Register(props) {
       </div>
       <div className="px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
         <h2 className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
-xl:text-bold">SIGN UP</h2>
+xl:text-bold">Sign up</h2>
         <div className="">
           <form>
             <div>
